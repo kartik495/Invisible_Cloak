@@ -26,13 +26,12 @@ if __name__ == "__main__":
 
     while True:
         image=cam.read()[1]
-        mask=cv2.inRange(image,np.array([100,0,0]),np.array([255,20,20]))
+        mask=cv2.inRange(image,np.array([0,0,0]),np.array([50,50,50]))
         one=cv2.bitwise_and(background,background,mask=mask)
         mask=cv2.bitwise_not(mask)
         two=cv2.bitwise_and(image,image,mask=mask)
         cv2.imshow('mask',one+two)
-        cv2.imshow('m',one)
-        cv2.imshow('mas',two)
+   
         
         if cv2.waitKey(70)==ord('q'):
             cv2.destroyAllWindows()
